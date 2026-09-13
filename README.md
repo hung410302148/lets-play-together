@@ -1,6 +1,8 @@
 # 一起玩吧 · 通用活動遊戲平台
 
-獨立的 React + TypeScript 手機優先專案。沿用「厭世會社」的奶油色、橘色、圓角、匿名問題與固定 PASS 互動，沒有修改原專案。三種遊戲共享房間、玩家、暱稱、留言、六種表情及動態通知。
+獨立的 React + TypeScript 手機優先專案，採用草地野餐色系、圓角卡片、匿名問題與固定 PASS 互動。三種遊戲共享房間、玩家、暱稱、留言、六種表情及動態通知。
+
+公開網站：**https://hung410302148.github.io/lets-play-together/**
 
 ## 本機啟動
 
@@ -27,7 +29,7 @@ npm run dev
 3. 主持人選遊戲；所有玩家同步切換，不需重新加入。
 4. 主持人可直接切換遊戲、移交主持權、移除玩家或關閉房間。
 
-本機端點均綁定 loopback，避免影響其他專案：網站 15173、Auth 19099、Firestore 18080、Functions 15001、Storage 19199、Emulator UI 14000。**localhost 網址不能直接讓另一支手機加入**；本次完成標準為同一台電腦兩個瀏覽器。若之後要實機區網測試，須另外調整 emulator/Vite 的 host、防火牆和安全連線；本交付未開放區網或公開部署。
+本機端點均綁定 loopback，避免影響其他專案：網站 15173、Auth 19099、Firestore 18080、Functions 15001、Storage 19199、Emulator UI 14000。**localhost 網址不能直接讓另一支手機加入**；請使用上方公開網站讓不同手機加入同一房間。
 
 `npm run emulators:fresh` 不匯入舊資料。要保留本機測試資料，先在模擬器運行時執行 `npx firebase emulators:export ../../work/emulator-data --project demo-party`，停止後改用 `npm run emulators`，便會匯入並在正常關閉時匯出。勿突然關閉程序，以免來不及保存。
 
@@ -73,7 +75,7 @@ PASS 按鈕固定存在，指定題目只有回答者或主持人可 PASS；開�
 
 `firestore.rules` 預設拒絕寫入與跨玩家讀取；`storage.rules` 預設拒絕，限制圖片建立與下載。圖片用 authenticated `getBlob` 取得，沒有生成永久公開下載網址。Storage 物件不可覆寫；先刪舊作品才能重新投稿。
 
-房間七天到期後規則立即拒絕讀寫。`cleanup` 排程每天刪除到期房間、所有子文件與該房間全部圖片（包括中途失敗的孤立上傳）。排程僅正式 Firebase 設定後運作，本機沒有自動排程，測試資料由模擬器重置／匯出管理。雲端刪除不是跨 Firestore/Storage 的原子交易；如果刪除物件當下失敗，前端顯示錯誤，最終由到期清理收回。正式上線前需設定 Storage CORS、排程權限、App Check／用量控管及帳務；本次未部署任何服務。
+房間七天到期後規則立即拒絕讀寫。`cleanup` 排程每天刪除到期房間、所有子文件與該房間全部圖片（包括中途失敗的孤立上傳）。本機沒有自動排程，測試資料由模擬器重置／匯出管理。雲端刪除不是跨 Firestore/Storage 的原子交易；如果刪除物件當下失敗，前端顯示錯誤，最終由到期清理收回。
 
 ## 離線與安裝感
 
@@ -98,8 +100,8 @@ npm run test:pwa
 
 使用鎖定依賴，已修正稽核中的高／嚴重等級項目；目前 Firebase CLI 與後端 Google 相依套件仍有中等級傳遞依賴警示。測試與本機交付已完成，未宣稱這些依賴沒有任何弱點。
 
-## 日後連接正式 Firebase
+## 正式環境
 
-`.env.example` 可複製為 `.env.local`；預設始終是 `demo-party` 模擬器。取得發布授權後，才建立獨立 Firebase 專案，開啟 Anonymous Auth、Firestore、Storage、Functions，填入專案設定並將 `VITE_USE_EMULATORS=false`。需一併設定 Functions、兩份規則、Storage CORS、匿名登入允許網域與每日清理排程。**不要沿用「厭世會社」正式資料庫或把此專案覆蓋到原站。**
+公開版連接獨立 Firebase 專案 `lets-play-together-ffbc8`，使用台灣區 Firestore、Storage 與 Functions。Anonymous Auth、GitHub Pages 授權網域、資料與圖片安全規則、每日到期清理排程均已啟用。GitHub Actions 會在 `main` 更新後重新建置並發布 Pages。
 
 官方參考：[Firebase Emulator Suite](https://firebase.google.com/docs/emulator-suite)、[Firestore transactions](https://firebase.google.com/docs/firestore/manage-data/transactions)、[Firestore rules](https://firebase.google.com/docs/firestore/security/rules-conditions)、[Storage Emulator](https://firebase.google.com/docs/emulator-suite/connect_storage)。
