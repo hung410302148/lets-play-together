@@ -1,4 +1,5 @@
 rules_version = '2';
+// Room membership and mission visibility are verified through Firestore.
 service firebase.storage {
  match /b/{bucket}/o {
   match /rooms/{code}/{uid}/{file} {

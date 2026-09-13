@@ -1,6 +1,6 @@
 # 本機驗證紀錄
 
-日期：2026-09-13（Asia/Taipei）。本專案獨立建立；未發布公開網站。
+日期：2026-09-14（Asia/Taipei）。正式網站已發布至 GitHub Pages，後端使用 Firebase 專案 `lets-play-together-ffbc8`。
 
 另已通過正式建置的 Manifest、service worker 啟用、首次安裝後离線外殼測試；私人 API 與圖片未加入快取。
 
@@ -18,9 +18,10 @@
 | 兩個隔離 Chrome context：桌面 1280px、手機 390px | 完整三模式流程通過 |
 | 網址加入、刷新保留身分、離線／重連               | 通過               |
 | 手機與桌面水平溢出、未處理頁面例外               | 未發現             |
+| 正式 Auth、Functions、Firestore 與 Storage 流程   | 通過               |
 
 瀏覽器測試自動產生 `evidence/desktop-entry.png`、`mobile-lobby.png`、`mobile-question-box.png`、`mobile-vote-result.png`、`mobile-photo-result.png`、`desktop-photo-host.png`；已視覺檢查桌面入口及手機照片頁。
 
-測試環境：Windows、Node 24.15.0、Java 17、Firebase CLI 13.35.1、實際 Auth/Firestore/Functions/Storage 模擬器。模擬器測試沒有使用正式 Firebase 金鑰或正式資料庫。
+測試環境：Windows、Node 24.15.0、Java 17、Firebase CLI 13.35.1、Auth/Firestore/Functions/Storage 模擬器，以及正式 Firebase 服務。正式測試房間在測試結束後由主持人流程關閉並清理。
 
-限制：尚未測試真實 iOS／Android 裝置、正式 Firebase 部署、正式排程清理與 App Check；開發相依套件尚有中等級稽核警示，高／嚴重等級已修補。小型房間投影架構的容量與正式部署前設定詳見 README。
+限制：尚未測試真實 iOS／Android 裝置、正式排程清理與 App Check；開發相依套件尚有中等級稽核警示，高／嚴重等級已修補。小型房間投影架構的容量與正式部署設定詳見 README。
