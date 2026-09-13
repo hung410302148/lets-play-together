@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function member(code) {return request.auth != null && request.auth.uid in get(/databases/$(database)/documents/rooms/$(code)).data.members && get(/databases/$(database)/documents/rooms/$(code)).data.expiresAt > request.time.toMillis();}
+  match /rooms/{code} {
+   allow get: if member(code);
+   allow list, write: if false;
+   match /views/{uid} {allow read: if member(code) && request.auth.uid == uid; allow write: if false;}
+   match /access/{id} {allow read, write: if false;}
+  }
+  match /{document=**} {allow read, write: if false;}
+ }
+}

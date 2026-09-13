@@ -1,0 +1,14 @@
+rules_version = '2';
+service firebase.storage {
+ match /b/{bucket}/o {
+  match /rooms/{code}/{uid}/{file} {
+   function room() {return firestore.get(/databases/(default)/documents/rooms/$(code)).data;}
+   function access() {return firestore.get(/databases/(default)/documents/rooms/$(code)/access/$(uid + '_' + file.replace('.jpg', ''))).data;}
+   function member() {return request.auth != null && request.auth.uid in room().members && room().expiresAt > request.time.toMillis();}
+   allow read: if member() && (request.auth.uid == uid || request.auth.uid == room().host || access().visible);
+   allow create: if member() && request.auth.uid == uid && file.matches('.*[.]jpg') && access().owner == uid && !access().submitted && access().deadline > request.time.toMillis() && request.resource.size <= 2 * 1024 * 1024 && request.resource.contentType == 'image/jpeg';
+   allow update: if false;
+   allow delete: if member() && (request.auth.uid == uid || request.auth.uid == room().host);
+  }
+ }
+}

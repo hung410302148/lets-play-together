@@ -1,0 +1,965 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap");
+:root {
+  font-family: "Noto Sans TC", system-ui, sans-serif;
+  color: #302a26;
+  background: #f4efe7;
+  font-synthesis: none;
+  font-weight: 500;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  border: 1px solid #dfd4c9;
+  background: #fffaf4;
+  color: #483c33;
+  border-radius: 12px;
+  padding: 11px 16px;
+  min-height: 44px;
+  font-weight: 700;
+  transition:
+    background 0.15s,
+    transform 0.15s;
+}
+button:hover:not(:disabled) {
+  background: #f8dfd0;
+  transform: translateY(-1px);
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #ed704c;
+  outline-offset: 3px;
+}
+button.primary,
+.primary {
+  background: #ec6a46;
+  color: white;
+  border-color: #ec6a46;
+}
+button.dark,
+.dark {
+  background: #302a26;
+  color: #fffaf4;
+  border-color: #302a26;
+}
+button.danger {
+  color: #ae3426;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -0.055em;
+  line-height: 1.3;
+  margin-bottom: 0;
+}
+h2 {
+  font-size: 24px;
+  letter-spacing: -0.03em;
+}
+p {
+  line-height: 1.8;
+}
+small {
+  font-size: 12px;
+  color: #85786b;
+  line-height: 1.6;
+}
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 16px 0;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid #ddd0c3;
+  border-radius: 12px;
+  padding: 13px 14px;
+  background: #fff;
+  color: #302a26;
+  min-width: 0;
+}
+textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+form > .primary,
+form > .dark {
+  width: 100%;
+  margin-top: 16px;
+}
+.check {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+.check input {
+  width: 19px;
+  height: 19px;
+  accent-color: #ef6a45;
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  color: #ba5235;
+  margin-bottom: 14px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  white-space: nowrap;
+  letter-spacing: -0.05em;
+}
+.brand > span {
+  display: grid;
+  place-items: center;
+  background: #ed704c;
+  color: #fffaf4;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  font-size: 23px;
+  font-weight: 900;
+}
+.landing {
+  max-width: 1120px;
+  margin: auto;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-content: center;
+  gap: 80px;
+  padding: 70px 30px 35px;
+  background: radial-gradient(ellipse at 20% 50%, #f6e2cd, transparent 55%);
+}
+.intro > .brand {
+  margin-bottom: 74px;
+}
+.intro h1 {
+  font-size: clamp(35px, 4.7vw, 60px);
+  line-height: 1.35;
+  letter-spacing: -0.06em;
+  margin: 24px 0;
+}
+.intro h1 span {
+  color: #c45b3e;
+}
+.intro > p:not(.eyebrow) {
+  color: #817165;
+  font-size: 16px;
+}
+.mini-cards {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+.mini-cards span {
+  padding: 12px;
+  border: 1px solid #dfd0c0;
+  border-radius: 12px;
+  font-size: 13px;
+}
+.entry {
+  background: #fffaf4;
+  padding: 32px;
+  border: 1px solid #e4d7c9;
+  box-shadow: 0 20px 60px #493c2e10;
+  border-radius: 24px;
+  align-self: center;
+}
+.entry > button {
+  width: 100%;
+  margin-top: 14px;
+}
+.entry > small {
+  display: block;
+  text-align: center;
+  margin-top: 22px;
+}
+.divider {
+  font-size: 12px;
+  text-align: center;
+  color: #9d8d7c;
+  margin: 24px 0 6px;
+}
+.landing footer {
+  grid-column: 1/-1;
+  border-top: 1px solid #e1d6c9;
+  padding-top: 20px;
+  text-align: center;
+  color: #998b7e;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+.app {
+  padding-bottom: 110px;
+}
+.app > header {
+  height: 78px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 max(24px, calc((100% - 1060px) / 2));
+  border-bottom: 1px solid #e1d7cb;
+  background: #f4efe7ed;
+  backdrop-filter: blur(16px);
+}
+.room-code {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  background: transparent;
+}
+.room-code b {
+  font-size: 14px;
+  letter-spacing: 0.13em;
+  margin: 0 8px;
+}
+.connection {
+  font-size: 11px;
+  color: #528567;
+  white-space: nowrap;
+}
+.disconnected {
+  color: #b46b34;
+}
+.content {
+  max-width: 1060px;
+  margin: 36px auto;
+  padding: 0 24px;
+}
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+.pill {
+  display: inline-block;
+  font-size: 11px;
+  border: 1px solid #dfd3c4;
+  border-radius: 30px;
+  padding: 7px 12px;
+  color: #897562;
+  white-space: nowrap;
+}
+.panel {
+  background: #fffaf4;
+  border: 1px solid #e5d9cc;
+  border-radius: 22px;
+  padding: 26px;
+  margin-bottom: 20px;
+}
+.welcome {
+  background: #ead9c3;
+  border: 1px solid #dec8af;
+  border-radius: 22px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.welcome h2 {
+  font-size: clamp(16px, 5.2vw, 37px);
+  line-height: 1.4;
+  margin-bottom: 14px;
+  white-space: nowrap;
+}
+.welcome p:last-of-type {
+  font-size: 13px;
+  color: #866d57;
+  margin-bottom: 0;
+}
+.sun {
+  position: absolute;
+  right: 55px;
+  top: 25px;
+  font-size: 155px;
+  color: #d8764e;
+  line-height: 1.3;
+  transform: rotate(12deg);
+}
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.game-card {
+  text-align: left;
+  padding: 24px;
+  min-height: 295px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.game-card:disabled {
+  opacity: 1;
+}
+.game-icon {
+  font-size: 40px;
+  line-height: 1.3;
+  margin-bottom: 22px;
+  font-weight: 400;
+}
+.game-card h2 {
+  font-size: 23px;
+  margin: 12px 0 10px;
+}
+.game-card p {
+  font-size: 13px;
+  font-weight: 400;
+  flex: 1;
+  color: #7f7063;
+}
+.game-card b {
+  font-size: 12px;
+}
+.card-box {
+  background: #f5e4d5;
+}
+.card-likely {
+  background: #e7e8d9;
+}
+.card-photo {
+  background: #e2e7e8;
+}
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.section-title h2 {
+  margin: 0;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.actions button {
+  font-size: 12px;
+  padding: 8px 12px;
+}
+.host-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.host-strip > span {
+  font-size: 12px;
+  color: #887460;
+  margin-right: 4px;
+}
+.host-strip button {
+  font-size: 12px;
+}
+.selected,
+button[aria-pressed="true"],
+button.chosen {
+  border-color: #e56845;
+  background: #fbe4d8;
+  color: #b84d2f;
+}
+.play-panel > .eyebrow {
+  text-align: center;
+  margin-top: 12px;
+}
+.question {
+  font-size: clamp(26px, 4vw, 38px);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 710px;
+  margin: 30px auto;
+}
+.hint {
+  color: #8c7b6a;
+  font-size: 13px;
+  margin: 12px 0;
+}
+.play-panel > .hint {
+  text-align: center;
+}
+.pass-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-top: 1px solid #e8dacf;
+  border-bottom: 1px solid #e8dacf;
+  padding: 15px 0;
+  margin: 25px 0;
+  font-size: 13px;
+  color: #8c7b6a;
+}
+.pass-row button {
+  min-width: 110px;
+}
+.host-controls {
+  border-top: 1px dashed #dac6b4;
+  margin-top: 25px;
+  padding-top: 12px;
+}
+.host-controls > .primary {
+  width: 100%;
+}
+.host-controls small {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+.vote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 25px 0;
+}
+.vote-grid button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  min-width: 40px;
+  height: 40px;
+  background: #e9dccb;
+  border-radius: 50%;
+  color: #926c50;
+}
+.results {
+  background: #302a26;
+  color: #fff4e7;
+  border-radius: 18px;
+  padding: 24px;
+  margin: 18px 0;
+}
+.results p {
+  font-size: 13px;
+}
+.results .eyebrow,
+.results small {
+  color: #f0b193;
+}
+.result-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.result-row b {
+  min-width: 85px;
+}
+.result-row meter {
+  flex: 1;
+  accent-color: #f18a66;
+}
+.discussion {
+  margin-top: 18px;
+}
+.reaction-wrap {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+}
+.reaction-wrap button {
+  border-radius: 24px;
+  padding: 5px 11px;
+  font-size: 20px;
+  min-height: 40px;
+}
+.reaction-wrap small {
+  font-size: 11px;
+}
+.comment {
+  background: #f1e9df;
+  border-radius: 16px 16px 16px 3px;
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+.comment p {
+  margin: 5px 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.comment > button {
+  font-size: 11px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  min-height: 28px;
+}
+.comment-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.comment-form button {
+  white-space: nowrap;
+}
+.queue {
+  max-height: 520px;
+  overflow: auto;
+}
+.queue article {
+  padding: 18px 0;
+  border-bottom: 1px solid #e7dbcf;
+}
+.queue article p {
+  margin: 6px 0;
+}
+.empty {
+  text-align: center;
+  padding: 45px 10px;
+  color: #9a8877;
+}
+.members {
+  margin: 20px 0;
+}
+.members article {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #e5d9cc;
+}
+.members article > div {
+  flex: 1;
+}
+.members small {
+  display: block;
+}
+.members button {
+  font-size: 11px;
+  padding: 8px;
+}
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.photo-grid article {
+  border: 1px solid #e1d4c5;
+  border-radius: 18px;
+  padding: 14px;
+  background: #fff;
+}
+.photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  background: #eee7dc;
+  border-radius: 10px;
+}
+.photo-placeholder {
+  aspect-ratio: 4/3;
+  display: grid;
+  place-items: center;
+  background: #eee7dc;
+  font-size: 13px;
+}
+.photo-grid h3 {
+  margin: 12px 0 5px;
+  font-size: 17px;
+}
+.photo-grid article > button {
+  margin-top: 10px;
+}
+.error,
+.banner {
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  background: #f8ddcf;
+  overflow-wrap: anywhere;
+}
+.error {
+  color: #a72f22;
+  background: #ffddd5;
+}
+.error button {
+  float: right;
+  font-size: 11px;
+  padding: 0 8px;
+  min-height: 26px;
+}
+.banner {
+  color: #916b45;
+}
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 95px;
+  transform: translateX(-50%);
+  background: #302a26;
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 30px;
+  z-index: 20;
+  font-size: 13px;
+}
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border-top: 1px solid #e1d4c4;
+  background: #fffaf4f0;
+  backdrop-filter: blur(16px);
+  padding: 8px 20px max(8px, env(safe-area-inset-bottom));
+  z-index: 10;
+}
+nav button {
+  display: grid;
+  gap: 4px;
+  place-items: center;
+  flex: 1;
+  max-width: 190px;
+  border: 0;
+  background: transparent;
+  font-size: 25px;
+  padding: 5px 10px;
+  color: #a19384;
+}
+nav button span {
+  font-size: 11px;
+}
+nav button.active {
+  color: #c35b3d;
+  background: #f7eadf;
+}
+@media (max-width: 700px) {
+  .landing {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 32px 20px;
+  }
+  .intro > .brand {
+    margin-bottom: 35px;
+  }
+  .intro h1 {
+    font-size: 39px;
+  }
+  .intro > p:not(.eyebrow) {
+    font-size: 14px;
+  }
+  .mini-cards {
+    margin-top: 20px;
+  }
+  .entry {
+    padding: 24px;
+  }
+  .landing footer {
+    margin-top: 10px;
+  }
+  .app > header {
+    height: 68px;
+    padding: 0 16px;
+    gap: 8px;
+  }
+  .brand {
+    font-size: 17px;
+  }
+  .brand > span {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+  .room-code {
+    padding: 8px;
+    font-size: 0;
+  }
+  .room-code b {
+    font-size: 12px;
+    margin: 0;
+  }
+  .connection {
+    font-size: 0;
+  }
+  .connection::first-letter {
+    font-size: 16px;
+  }
+  .content {
+    padding: 0 16px;
+    margin: 26px auto;
+  }
+  .page-heading {
+    margin-bottom: 20px;
+  }
+  .page-heading h1 {
+    font-size: 29px;
+  }
+  .page-heading .pill {
+    font-size: 10px;
+    padding: 6px 9px;
+  }
+  .welcome {
+    padding: 25px;
+  }
+  .welcome h2 {
+    font-size: clamp(16px, 5.2vw, 37px);
+  }
+  .sun {
+    font-size: 115px;
+    right: 12px;
+    top: 38px;
+    opacity: 0.75;
+  }
+  .welcome p {
+    position: relative;
+    z-index: 1;
+    max-width: 210px;
+  }
+  .game-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .game-card {
+    min-height: 145px;
+    padding: 20px;
+    position: relative;
+    padding-left: 85px;
+  }
+  .game-card .game-icon {
+    position: absolute;
+    left: 25px;
+    top: 35px;
+    font-size: 35px;
+  }
+  .game-card small {
+    font-size: 9px;
+  }
+  .game-card h2 {
+    margin: 7px 0;
+    font-size: 21px;
+  }
+  .game-card p {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  .panel {
+    padding: 20px;
+    border-radius: 18px;
+  }
+  .panel h2 {
+    font-size: 21px;
+  }
+  .panel .question {
+    font-size: 27px;
+    margin: 24px auto;
+  }
+  .section-title .pill {
+    white-space: normal;
+  }
+  .vote-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .vote-grid button {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .vote-grid .avatar {
+    min-width: 30px;
+    height: 30px;
+  }
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+  .host-strip button {
+    padding: 8px 10px;
+  }
+  .members article {
+    flex-wrap: wrap;
+  }
+  .members article > div {
+    min-width: 90px;
+  }
+  .results {
+    padding: 18px;
+  }
+  .comment-form input {
+    font-size: 13px;
+  }
+  .comment-form button {
+    padding: 8px 12px;
+  }
+}
+
+/* B · 草地野餐：一起玩吧正式色系 */
+:root {
+  color: #253f3c;
+  background: #faf5e9;
+}
+body {
+  background: #faf5e9;
+}
+button {
+  background: #fffdf7;
+  color: #314b47;
+  border-color: #d8d7c4;
+}
+button:hover:not(:disabled) {
+  background: #edf3e6;
+}
+button.primary,
+.primary {
+  background: #e97550;
+  color: #fff;
+  border-color: #e97550;
+}
+button.dark,
+.dark {
+  background: #253f3c;
+  color: #fffdf7;
+  border-color: #253f3c;
+}
+.eyebrow {
+  color: #3d7068;
+}
+.brand > span {
+  background: #e97550;
+  color: #fffdf7;
+  font-size: 15px;
+  letter-spacing: -0.08em;
+}
+.landing {
+  background: radial-gradient(ellipse at 20% 50%, #e7eedc, transparent 58%);
+}
+.intro h1 span {
+  color: #e97550;
+}
+.entry,
+.panel {
+  background: #fffdf7;
+  border-color: #dcd9ca;
+}
+.app > header {
+  background: #faf5e9ed;
+  border-color: #d8d7c4;
+}
+.welcome {
+  background: #bfd0ad;
+  border-color: #a8bd99;
+}
+.sun {
+  color: #e97550;
+}
+.game-card {
+  border-color: #d8d7c4;
+}
+.card-box {
+  background: #f2dccd;
+}
+.card-likely {
+  background: #e7eedc;
+}
+.card-photo {
+  background: #dcebe7;
+}
+.selected,
+button[aria-pressed="true"],
+button.chosen {
+  border-color: #3d7068;
+  background: #e7eedc;
+  color: #315b55;
+}
+.avatar {
+  background: #dce6d4;
+  color: #3d7068;
+}
+.results {
+  background: #253f3c;
+  color: #fffdf7;
+}
+.results .eyebrow,
+.results small {
+  color: #bfd0ad;
+}
+.comment {
+  background: #edf0e5;
+}
+.error {
+  background: #f7ddd3;
+  color: #9d3828;
+}
+.banner {
+  background: #e7eedc;
+  color: #49665d;
+}
+.toast {
+  background: #253f3c;
+}
+.pill {
+  border-color: #cfd4c6;
+  color: #5e7068;
+}
+nav {
+  background: #fffdf7f2;
+  border-color: #d8d7c4;
+}
+nav button.active {
+  color: #3d7068;
+  background: #e7eedc;
+}
+.photo-placeholder {
+  background: #e9eee4;
+}
+.photo {
+  background: #e9eee4;
+}
