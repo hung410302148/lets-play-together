@@ -8,7 +8,9 @@ import sharp from "sharp";
 import { makeRoom, act, project } from "./engine.mjs";
 initializeApp();
 const db = getFirestore();
-export const command = onCall({ maxInstances: 10 }, async (request) => {
+export const command = onCall(
+  { region: "asia-east1", maxInstances: 10 },
+  async (request) => {
   const uid = request.auth?.uid;
   if (!uid) throw new HttpsError("unauthenticated", "請重新登入");
   const { action, payload = {}, requestId } = request.data || {};
@@ -127,9 +129,12 @@ export const command = onCall({ maxInstances: 10 }, async (request) => {
       e.message || "操作失敗，請再試一次",
     );
   }
-});
+  },
+);
 // Seven-day rooms have a daily server-side cleanup, including all image objects and private views.
-export const cleanup = onSchedule("every 24 hours", async () => {
+export const cleanup = onSchedule(
+  { schedule: "every 24 hours", region: "asia-east1" },
+  async () => {
   const expired = await db
     .collection("internal")
     .where("expiresAt", "<", Date.now())
@@ -141,4 +146,5 @@ export const cleanup = onSchedule("every 24 hours", async () => {
     await db.recursiveDelete(db.doc(`rooms/${room.id}`));
     await room.ref.delete();
   }
-});
+  },
+);

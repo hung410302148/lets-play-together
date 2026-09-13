@@ -43,7 +43,7 @@ async function client(name) {
   const uid = (await signInAnonymously(auth)).user.uid;
   const db = getFirestore(app);
   connectFirestoreEmulator(db, "127.0.0.1", 18080);
-  const fn = getFunctions(app);
+  const fn = getFunctions(app, "asia-east1");
   connectFunctionsEmulator(fn, "127.0.0.1", 15001);
   const storage = getStorage(app);
   connectStorageEmulator(storage, "127.0.0.1", 19199);

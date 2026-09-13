@@ -18,7 +18,7 @@ const app = initializeApp({
 export const auth = getAuth(app),
   db = getFirestore(app),
   storage = getStorage(app),
-  functions = getFunctions(app);
+  functions = getFunctions(app, "asia-east1");
 if (emulator) {
   const host = location.hostname;
   connectAuthEmulator(auth, `http://${host}:19099`, { disableWarnings: true });
