@@ -132,13 +132,15 @@ export default function App() {
   }
   const host = room?.host === uid;
   async function share() {
+    const joinUrl = new URL(import.meta.env.BASE_URL, location.origin);
+    joinUrl.searchParams.set("room", code);
+    const url = joinUrl.toString();
     try {
-      const url = `${location.origin}/?room=${code}`;
       if (navigator.share) await navigator.share({ title: "一起玩吧", url });
       else await navigator.clipboard.writeText(url);
       setNotice("房間網址已分享／複製");
     } catch {
-      setNotice(`加入網址：${location.origin}/?room=${code}`);
+      setNotice(`加入網址：${url}`);
     }
   }
   if (!code)
